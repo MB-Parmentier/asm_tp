@@ -13,7 +13,7 @@ section .text
 _start:
  
 	mov rax,0
-	mov rdi,0
+	mov rdi,1
 	mov rsi, number
 	mov rdx,10
 	syscall
