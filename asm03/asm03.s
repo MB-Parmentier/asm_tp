@@ -30,6 +30,12 @@ _start:
 	mov al,[r8+2]
 	cmp al,0
 	jne noteq
+
+	mov rax,1
+	mov rdi,0
+	mov rsi,value
+	mov rdx,5
+	syscall
  
 	mov rax,60
 	mov rdi,0
