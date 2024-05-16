@@ -12,13 +12,6 @@ section .text
  
 _start:
  
-	; affichage de 1337 à ajouter
-	mov rax,1
-	mov rdi,0
-	mov rsi,value
-	mov rdx,5
-	syscall
- 
 	mov rax,0
 	mov rdi,0
 	mov rsi, number
@@ -30,8 +23,6 @@ comparison:
 	cmp byte [rsi],'4'
 	jne exitnoteq
  
-equal:
- 
 	cmp byte [rsi+1],'2'
 	jne exitnoteq
  
@@ -39,6 +30,13 @@ equal:
 	jne exitnoteq
  
 exit:
+
+	mov rax,1
+	mov rdi,0
+	mov rsi,value
+	mov rdx,5
+	syscall
+ 
 	mov rax,60
 	mov rdi,0
 	syscall
