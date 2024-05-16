@@ -23,6 +23,10 @@ _start:
 	cmp al,'2'
 	jne noteq
  
+	mov al,[r8+2]
+	cmp al,0
+	jne noteq
+ 
 	mov rax,60
 	mov rdi,0
 	syscall
