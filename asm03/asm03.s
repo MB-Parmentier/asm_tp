@@ -6,6 +6,10 @@ section .data
 section .text
  
 _start:
+
+	pop rax
+	cmp rax, 1 ; nb d'elem
+	jne noteq
  
 	mov r8,[rsp+16]
  
