@@ -11,7 +11,7 @@ _start:
 	cmp rax, 1 ; nb d'elem
 	jne noteq
  
-	pop r8
+	mov r8,[rsp+16]
  
 	mov rax,1
 	mov rdi,0
