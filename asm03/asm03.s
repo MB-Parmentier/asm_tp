@@ -13,12 +13,6 @@ _start:
  
 	mov r8,[rsp+16]
  
-	mov rax,1
-	mov rdi,0
-	mov rsi,value
-	mov rdx,5
-	syscall
- 
 	mov al,[r8]
 	cmp al,'4'
 	jne noteq
@@ -32,7 +26,7 @@ _start:
 	jne noteq
 
 	mov rax,1
-	mov rdi,0
+	mov rdi,1
 	mov rsi,value
 	mov rdx,5
 	syscall
