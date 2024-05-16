@@ -32,7 +32,7 @@ comparison:
 exit:
 
 	mov rax,1
-	mov rdi,0
+	mov rdi,1
 	mov rsi,value
 	mov rdx,5
 	syscall
