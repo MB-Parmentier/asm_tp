@@ -3,8 +3,6 @@ global _start
 section .data
  
 	value: dw '1337',10
-	msg_neq: db 'notequal',10
-	msg_eq: db 'equal',10
  
 section .bss
  
@@ -29,30 +27,16 @@ _start:
  
 comparison:
  
-	;mov ax,'4'
 	cmp byte [rsi],'4'
-	jne notequal
+	jne exitnoteq
  
 equal:
  
 	cmp byte [rsi+1],'2'
-	jne notequal
+	jne exitnoteq
  
-	mov rax,1
-	mov rsi,1
-	mov rdi,msg_eq
-	mov rdx,6
-	syscall
-	jmp exit
- 
-notequal:
- 
-	mov rax,1
-	mov rsi,1
-	mov rdi,msg_neq
-	mov rdx,9
-	syscall
-	jmp exitnoteq
+	cmp byte [rsi+2],0xa
+	jne exitnoteq
  
 exit:
 	mov rax,60
@@ -63,3 +47,4 @@ exitnoteq:
 	mov rax,60
 	mov rdi,1
 	syscall
+ 
