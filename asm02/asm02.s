@@ -36,7 +36,7 @@ equal:
 	mov rax,1
 	mov rdi,0
 	mov rsi,value
-	mov rdx,5
+	mov rdx,4
 	syscall
 
 exit:
