@@ -2,7 +2,7 @@ global _start
 
 section .data
 
-	value: dw '1337',10
+	value: dw '1337'
 
 section .bss
 
