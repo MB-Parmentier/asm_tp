@@ -8,10 +8,12 @@ section .text
 _start:
 
 	pop rax
-	cmp rax, 1 ; nb d'elem
+	cmp rax, 2 ; nb d'elem
 	jne noteq
- 
-	mov r8,[rsp+16]
+
+	pop r9
+	pop r8 
+	;mov r8,[rsp+16]
  
 	mov al,[r8]
 	cmp al,'4'
