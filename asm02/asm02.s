@@ -34,7 +34,7 @@ equal:
 
  	; affichage de 1337 si input = 42
 	mov rax,1
-	mov rdi,0
+	mov rdi,1
 	mov rsi,value
 	mov rdx,4
 	syscall
