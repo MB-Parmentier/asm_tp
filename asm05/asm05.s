@@ -4,7 +4,6 @@ section .bss
 
 	arg1 resq 4
 	arg2 resq 4
-        ;bits resb 2 ; afficher 1 chiffre + 1 bit null
 	val resb 6
 
 section .text
@@ -95,46 +94,19 @@ affichage:
 	jl exit
 
         movzx rsi,byte[val+r13]
-	;mov r15b, byte rsi                          ; Placer le caractère dans r15b
-	;mov byte [buffer], r15b                ; Placer le caractère dans buffer
-	mov r15,rsi
-	mov [buffer],r15
+	mov [buffer],rsi
 	mov byte[buffer+1],0
-	;mov r15+1, 0               ; Ajouter un caractère nul
-        ;mov byte [r15],rsi
-        ;mov byte [r15+1],0
 
 	mov rax,1
 	mov rdi,1
-	mov rsi,r15
+	mov rsi,buffer
 	mov rdx,2
 	syscall
 
 	dec r13
 	jmp affichage ; affichage des caractères à l'envers du tableau
 
-
-;affichage:
-;	mov r13,val
-;	add r13,5
-;loop:
-;	cmp byte[r13],0
-;	je exit
-;	mov rax,1
-;	mov rdi,1
-;	lea rsi,[r13]
-;	mov rdx,1
-;	syscall
-;	dec r13
-;	jmp loop
-
 exit:
-
-	;mov rax,1
-	;mov rdi,1
-	;mov rsi,[val+r13]
-	;mov rdx,1
-	;syscall ; affichage du dernier caractère
 
 	mov rax,60
 	mov rdi,0
