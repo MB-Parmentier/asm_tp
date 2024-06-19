@@ -13,12 +13,25 @@ section .text
 
 _start:
 
+	; Gestion de l'ARGUMENT :
+
+	pop r10
+	cmp r10,2
+	jne suite
+	pop r14
+	pop rsi ; nombre
+	mov [input],rsi
+	jmp commun
+ 
+	; Si aucun argument :
+suite:
 	mov rax,0
 	mov rdi,0
 	mov rsi,input
 	mov rdx,5
 	syscall
 
+commun:
         ; Supprimer le caractère de nouvelle ligne
         mov rbx, input
         mov rcx, 5 ; Longueur maximale de l'entrée
@@ -76,7 +89,6 @@ addition:
 done:
 
 	; NOMBRE DANS R8
-  ; conversion en ASCII
 	mov rax,r8
 	lea rsi, [buffer + 19]
 	mov byte [rsi], 0
