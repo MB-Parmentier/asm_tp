@@ -34,15 +34,14 @@ longueur:
 	; r8 = longueur de la chaîne
 	mov [lng],r8
 
-	; r8 = compteur 1 (nombre décimal)
-	; r9 = compteur 2 (puissance de 2)
-	; gestion du bit de poids faible (2⁰)
-
-	mov r15,0 ; décalage
-	mov r14,1 ; puissance 2
-	mov r13,0 ; décimal
+	; partir du dernier octet et décrémenter
+ 	; r13 = décimal, r14 = puissance 2, r15 = décalage
+	mov r15,r8
+	mov r14,1
+	mov r13,0
 
 boucle:
+	dec r15
 	mov al, [r9 + r15]  ; Charger le bit courant
 	cmp al, '1'
 	jne skip_add
@@ -50,9 +49,9 @@ boucle:
 
 skip_add:
 	shl r14, 1          ; Multiplier la puissance de 2 par 2
-	inc r15             ; Passer au bit suivant
-	cmp r15, r8         ; Vérifier si on a traité tous les bits
-	jle boucle
+	;inc r15             ; Passer au bit suivant
+	cmp r15,0         ; Vérifier si on a traité tous les bits
+	jg boucle
 
 fin:
 
